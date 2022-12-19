@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetDataPowerBi" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="676,933" sap2010:WorkflowViewState.IdRef="GetDataPowerBi_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetDataPowerBi" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="880,2788.8" sap2010:WorkflowViewState.IdRef="GetDataPowerBi_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="33">
+    <scg:List x:TypeArguments="x:String" Capacity="37">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -34,10 +34,14 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -69,30 +73,124 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetDataPowerBi" sap:VirtualizedContainerService.HintSize="518,868" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetDataPowerBi" sap:VirtualizedContainerService.HintSize="592,2724" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtReport2" />
+      <Variable x:TypeArguments="si:FileInfo" Name="DowloadFile" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="476,623" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\andrade_cicero\Downloads\data (3).xlsx">
-      <ui:ExcelApplicationScope.Body>
-        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Edge: RESERVA DE COTAS - Power BI" sap:VirtualizedContainerService.HintSize="529.6,1736.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="4f4704cd-155d-45a3-8298-6fb4fb70e639" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="442,504" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,1510.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,414" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <uix:NClick ClickType="Single" DisplayName="Click 'Analítico'" sap:VirtualizedContainerService.HintSize="433.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4f4704cd-155d-45a3-8298-6fb4fb70e639" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://app.powerbi.com/groups/8bdd631e-5557-4a28-87af-520464155137/reports/76491c3b-14f4-4b6b-9a28-5116923966d5/ReportSectione21162cf09683e3ee019?language=pt-BR" DesignTimeRectangle="59, 274, 74, 23" ElementType="Text" FriendlyName="'Analítico'" FullSelectorArgument="&lt;webctrl aaname='Analítico' parentid='content' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Analítico' parentid='content' tag='SPAN' type='' class='itemName' check:innerText='Analítico' /&gt;" Guid="ef4d4049-d865-4002-814a-97453ee7977b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAbCAYAAADS6blZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGNSURBVGhD7ZZLjsMgDEDnKtwuUm8TcZHkHukNRqNZVWKftYuBBBdCkxjUmap+Uj8EDPgBpV/zPMPvzzcI5xBxTEQcExHHRMQxEXFMRByTNuJuA3RKgb6GchMMDJe0T/+sG00oR8zYgboMtsVraCJu6m2CvQbVT+FJC3JxbpxQxu9bAl9FA3ETaKXtO352MNzC42pScQYM6fv9xV3jTsuTWZJHqQqUeyVyMX6to/GJOGznjqJ/HmNCf2t9BOcT2+HiBpIxOSelWhw9PvnklyTjpF0ypM1kj/hjQku5JM6TLdJGPRVixsH368agi+fHObt768S5S4Ekbr89HtckeSSLodD4CnFPxsjikKTvI1SJczcZ3fLZ1j8gLtzIMb6BuKKIjfkgTxdzmwpxRyaxIy6b8B/tOGy/KboMX1xxcjThHXHpzsByC3Eh9l/+xuHES7dR/DO6I25JcD3i+vCO8/1gXGif1qd90zonL9adlYbUXQ4fjIhjIuKYiDgmIo6JiGMi4piIOCYijomIYwFwB6p6daw2+19pAAAAAElFTkSuQmCC" InformativeScreenshot="35bf4349617eff7cf6f1d9d1e0495568.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RESERVA DE COTAS - Power BI' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="59, 265, 180, 40" ElementType="Button" FriendlyName="'Analítico'" FullSelectorArgument="&lt;webctrl aaname='Analítico' tag='BUTTON' type='button' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Analítico' tag='BUTTON' type='button' class='mat-list-item mat-focus-indicator exploration-fluent-li item trimmedTextWithEllipsis fluentTheme-sm-reg pbi-focus-border ng-star-inserted' check:innerText='Analítico' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALgAAAAsCAYAAADWxHKSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHxSURBVHhe7dlbjoIwAEbh2Qq7I3E3ho3gPnAHk8k8meCzzx0KhdYWlNgmo3/OlzDKpeDD4aLzdbvdzO/Pt7ler0xMMtOMwJkkp9kSOKCIwCGNwCGNwCGNwCGNwCGNwCGNwCGNwCGNwCGNwCGNwCGNwCGNwCGtTOCX1tRVZZqzmy+iN+0h3ue0rD71bt7rT7WpDu2wBeAVCbw7DiEeG1MdO7ekhDTw8Thu3r5fCx0IFQi8M03VDH/ta23ai1ucLQ68N32wbwLHHvmBn/2VO41ujtTGX5lqnKKTwI5f1oXjo8DtduMjyLTcj3H7W9Z79vP47exJ6ETHLHvnwTvJDjx8bEgjm2P0cY3RBdt0w6PNfXjz/Fbgk+RkWlkfhtuf2mm/4zHCk2w6DncDTXmBj18ug0CHd/ePKVGkVjImFI7PCPzBMZJxVrRv6MgKfPzlIrzVJ7f8HYG7X2D8+AKBbwa78nmshycdPllG4HtieRJ4EtY/XcHt9qsnBD7d64FvRhSG+STw+Epr50sE7sbyDI6XA7eBbf364P/p8iTwOcTl0abZfQWf9mPHue3j9fG+w3Vj5H4dcevK+5IJvDkChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzQChzBj/gBS6ljJ+7fEHwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NHover DisplayName="Hover 'Reservas'" sap:VirtualizedContainerService.HintSize="433.6,167.2" sap2010:WorkflowViewState.IdRef="NHover_1" ScopeIdentifier="4f4704cd-155d-45a3-8298-6fb4fb70e639" Version="V1">
+              <uix:NHover.Target>
+                <uix:TargetAnchorable BrowserURL="https://app.powerbi.com/groups/8bdd631e-5557-4a28-87af-520464155137/reports/76491c3b-14f4-4b6b-9a28-5116923966d5/ReportSection1546a6aba8b6c52d8f86?language=pt-BR" DesignTimeRectangle="261, 217, 268, 20" FriendlyName="'Central'" FullSelectorArgument="&lt;webctrl aaname='Central' parentid='pvExplorationHost' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Central' parentid='pvExplorationHost' tag='DIV' type='' class='pivotTableCellWrap cell-interactive ' check:innerText='Central' /&gt;" Guid="d5474e85-309d-46e5-b604-e6c3f848fbd4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARAAAAAYCAYAAAAyLqLMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFoSURBVHhe7dlBSsNAFIBh76KeLD1Lkjt4AofcJNDu3LhyVRhQEARFF8+ZzkyYlEnSPt0M/B88GmPrbn5e6o0AgBIBAaBGQACoERAAagQEgBoBAaC2ERArprmV+7swu8HG+/9sNGKO8RpANVYC4uPR/OFg78VcGhwCAlRpOSBjK90Yr2fyraR1mXBcALq+ye5l72mM2KMLRN+6n32Q9tLFjeb0u/h5AgLUZzEgdjAhDudmhz1uGS420+ONi0V3us42EHdv1xf+WooUAQGqtLKBlA+1HdKmEceHoRSVs4CYaZvJNhA3BASo18p3IP6gx0eUXOmwXxGQfLPxMSIgQL1WAuLNt4XwmFL4z0wxIPF96TuQtIH4x5n02b4N9wkIUKWNgADAMgICQI2AAFAjIADUCAgANQICQI2AAFAjIADUpoB8fIu8fjIMw2zP1094nQLycGAYhrlsnt/CK48wAK7y8i7y+OSvRH4BZJxspPHuf10AAAAASUVORK5CYII=" InformativeScreenshot="83e49e3f7cb660e812fd272e98795a72.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RESERVA DE COTAS - Power BI' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="529, 217, 44, 20" FriendlyName="'Reservas'" FullSelectorArgument="&lt;webctrl aaname='Reservas' parentid='pvExplorationHost' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Reservas' parentid='pvExplorationHost' tag='DIV' type='' class='pivotTableCellWrap cell-interactive ' check:innerText='Reservas' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAYCAYAAAC8/X7cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFOSURBVFhH7VQ7bsMwDM1dkpzMPkucO2QPUME3MaAuRZdOnQwYaItODdCBfRRp2UqUwO2iqNADGNGifo+PzIoyRyGQGoVAavxnApaazZq2ak2n03eGmwRMO6g/kNkb/N4fFhKAGnsrbrfzqtQuDnJV/Hu72WEn0BskgPdVZHrEWz2L0SHWz9SuNFH+Hj3jChaW0HhIePnQGrJ4XOOJAu5B6mOXSwLW1GMCALdPvJAMAw/ncrUgfBaJYpECFheqF/SFZJQfVJ35szX8cFYg6CFLlr/9fKzfdG5GPIZlJeQvimTMAzHuk0ABxQUBnM4qdNYlZlJEEhD8Yagi1/D7Jp71gJTWlL3LHtC5CAE+R9YDiNfjepQOr52U/HMP5IFCIDUKgdQoBFIjfwJvX0Rsp28Zc7GPk4yrwyMR28u7jLnY8UlGV0Kvn0QPz06RzED0A7VuLJPY5Ql4AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NHover.Target>
+            </uix:NHover>
+            <uix:NClick ClickType="Single" DisplayName="Click 'I'" sap:VirtualizedContainerService.HintSize="433.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4f4704cd-155d-45a3-8298-6fb4fb70e639" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://app.powerbi.com/groups/8bdd631e-5557-4a28-87af-520464155137/reports/76491c3b-14f4-4b6b-9a28-5116923966d5/ReportSection1546a6aba8b6c52d8f86?language=pt-BR" DesignTimeRectangle="1123, 235, 16, 16" FriendlyName="'I'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;root&amp;gt;mat-sidenav-container&amp;gt;mat-sidenav-content&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;report&amp;gt;exploration-container&amp;gt;div&amp;gt;div&amp;gt;docking-container&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;exploration-host&amp;gt;div&amp;gt;div&amp;gt;exploration&amp;gt;div&amp;gt;explore-canvas&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;visual-container-repeat&amp;gt;visual-container&amp;gt;transform&amp;gt;div&amp;gt;visual-container-header&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;visual-container-options-menu&amp;gt;visual-header-item-container&amp;gt;div&amp;gt;button&amp;gt;i' parentid='pvExplorationHost' tag='I' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' parentid='pvExplorationHost' tag='I' class='glyphicon pbi-glyph-more glyph-small' aaname='' /&gt;" Guid="7e41ecfa-988a-424b-9199-a1f0a8b8378b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADuSURBVDhP7Y45bsMwEEV5J90hF/FJcodUgav0blOkzQWSypWdxq4ULdRKavvOD0CBoihAgNwlAzyCM5z/QFEUBbIsg5QSaZoiSRLEcYwoikbYc8537uZ5DubKskRVVSN1XUPwYMNHLnGZIRvOXAlzSqkRrfUvggcHXLDlNvYPXEHTNBOEuZgFE3DxCdq2nSF8Qzu0FO66zoswFzewhB32Ifq+xz0RwzDgnsyFrUJ4PuESq3W9w0wYfr7i5fkJ+8M7TvIn7PSXt0c8BAGC3R5HOc2STcIPnxBudRrfX2dcE72ud2ou3Fj/wu3154TADe5MFYBUYevHAAAAAElFTkSuQmCC" InformativeScreenshot="61fdd1d74383fb51178e920ac1919c2a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RESERVA DE COTAS - Power BI' /&gt;" SearchSteps="Selector, FuzzySelector" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="1121, 178, 24, 24" ElementType="Icon" FriendlyName="'MAT-ICON'" FullSelectorArgument="&lt;webctrl parentid='exploration-container-app-bars' tag='MAT-ICON' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='exploration-container-app-bars' tag='MAT-ICON' type='' class='mat-icon notranslate pbi-glyph-font-face pbi-glyph-reset mat-icon-no-color' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGQSURBVEhL7ZHNSgJhFIbnShS8hVrVFXQF0apNCLVt2e+qhVRW1iIiC4yKoiiqjRYWZJuwpJQ2UZhWCKE245Sa+jZHnEnz5B+DtPDAAzLv+d5nvlGQZRnN5H8KAy8hWC+O0bNjR/uyBab58Tz0m55RRjvc2d9UFFLJwNEGjLbRmqDdamIhkUiAY8Xrgck2BuOcUlYHdIbOcp0EK5z2uNiyeqAOrrtMSG/HFTQCd9MSof/5qaHP+BfURZ3FDkGSJKj0H64riyNl9F6HEYv5YWayalBnsUMT3oaD7IG8TLqHZbM8qxXq1oSiKIKYOnfCOKsslODGZSqDTDoJ+ZMhlUQ0HsKue4E5+wN1qx4hHo+D6N5agmFmuIxO1w0epAgOXJNs3nXixZ0kwuddZXOCulWPEI1GQbQtTsBgHWLpcPoQePVhkMny2E9x9R6GY5vJFKhb9Wg3NO+voW/P0TCWxzdEgmdsRt3aDVGYj690BZT/MZdFks0KZHPIKTtspqCOJmzWtIS6T0uo+7SEuk9LqPMA330qskuZvS4CAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Exportar dados'" sap:VirtualizedContainerService.HintSize="433.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4f4704cd-155d-45a3-8298-6fb4fb70e639" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://app.powerbi.com/groups/8bdd631e-5557-4a28-87af-520464155137/reports/76491c3b-14f4-4b6b-9a28-5116923966d5/ReportSection1546a6aba8b6c52d8f86?language=pt-BR" DesignTimeRectangle="1121, 302, 233, 24" ElementType="Button" FriendlyName="'Exportar dados'" FullSelectorArgument="&lt;webctrl aria-role='menuitem' id='2' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='menuitem' id='2' tag='BUTTON' type='' class='pbi-menu-item ng-star-inserted' aaname='Exportar dados' check:innerText='Exportar dados' /&gt;" Guid="df6c1bf4-2724-43d1-9d85-e44ef322abe1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAO0AAAAcCAYAAACNgzgzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAPtSURBVHhe7ZnNS1RRGIf7Xyr6pKxVGlTblGqXG+0fUDeli3STliYYqBW2scQQA0lmFmZikGEoiC5FA8WVoIifCz9R3/ydua+83mbIZJyZY78HDvee73Ou7zNzvHNqdnZWpqamhBCS2cDTwsJCobSEeAKlJcQzKC0hnkFpCfEMSkuIZ1BaQjyD0hLiGWmVdnt7W3p6vkpjQ8N+6ujokPX19aAFISRMWqUdGR520u7s7Lj85OSk1Na+dGl1ddWVEUIOklZph4aGXFIgbXd3t/waHz+yuEtLS/Job0PXr2W5lJd7N+X7SibRaMSlf2FkZEReNzYGOXLSyDhpo9Go7O7uOnEb6utlc3MzqD0ckLa8/Km7phI8u5qa6qQf7SktCZNR0ob/xy198lgWFxeD2sNBaSntSSet0i4sLLiUiI+trUmTFkGswY99lpQUuzYo/9bbu3+kRl8rHur1qG3rMNb75mbX73lVlTuGaztIg7HtMd3ODbmRUB9ep+2HK+bQvrjqeLYv1oS1oRzr+NTefkDaRHvAOuOVk8wmbdJOT09LcVGRXDh/TvLycqW/v98diy1HldbKosGNhMCcmZlxwuheEdBWAORVEtzb4Ee55nFv+6mM8QJf58YV7SAWhAmj8un8aI85NG9BmZbbdeoYmrd1AH2QRzv7HIg/4G+Wcmnn5+f3Ji2Qs2dOy6u6OsnPfyhZV6/I4MBA0CJGMr9pgX6zWAkQwFYglQ/9UWfHsWNbaYD2s9KiXj889IVYvHaKzhkeQ+dBvf1A0rbhdWI/iepwr3tAnf3gIX6AGEq5tH193+XypYvy4P49d7QcHR114lZUlMvW1lbQKvnSYn+Qx8qGwD0OaVGH/gBlqEObcDtLvDqdB3PiSI82QMW0a1IOK63mIS7K4q2JZB6IgZRLG4lE5GZOtnR2fna/1c7NzUlZWalLGxsbQavkSqvl8Y7HKhfAvcoYrrMiqkxKWDg7TuwhF7hruJ0FZVijfoioUBgH/fT/cGDXZufSMWyd3gO0s3mAPvaZkMwmFk8plhY/7dy5fcsdj1taPkhl5TN339bWFrSIBdK7piZZXj4o39/QQNcjJNLg4KALZA1sSKHHQg1qe+RUVACtwz3KAMbS8YBti/HxLPXlFGRDHcqQEkkLbD+s0b6ICq9T12r3jL72RVSiPYTL7V5IZoMYSbm0eOH0patLcrJvOFnxMqqm+oVMTEw4UfFzz9u3b2RsbCzocXwguPWbjRAfSIu0ytramjv+rqys/PHmOFVQWuIbaZU2E6C0xDf+e2kJ8Q1KS4hnUFpCPAOeNv+YoLSE+IKT9ielJcQb4CmPx4R4REzaQvkNCsUHGZMpCusAAAAASUVORK5CYII=" InformativeScreenshot="745f6db12fb59456737bbe0bd3649ff8.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RESERVA DE COTAS - Power BI' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="1121, 326, 233, 24" ElementType="Button" FriendlyName="'Mostrar como uma tabela'" FullSelectorArgument="&lt;webctrl aria-role='menuitem' id='3' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='menuitem' id='3' tag='BUTTON' type='' class='pbi-menu-item ng-star-inserted' aaname='Mostrar como uma tabela' check:innerText='Mostrar como uma tabela' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAO0AAAAcCAYAAACNgzgzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAASzSURBVHhe7ZrBT1xVFIf9k9T/Qt3VBRvGqAk1YpvUXe2irqxN3ZTS1EVBuxCsbOiixqYlFqJIYmBTA0igLKAB7AJCQiCBkKPfc370zM2bGZgmM1xyvuTmvXvfveece+/5vbnD8MbGxoYtLy9bEASnG3Q6ML5oIdogyIRCtL+FaIMgG9BppVIJ0QZBLoRogyAzQrRBkBkh2iDIjBBtEGRGiDYIMqNjop2bm7Pbt/ut7+bNhuXeve9ta2urOioIgo6Idnt72768etWeP1+yzc3NhmVsbMwG7t6tjmwOAv/gvwk9eDBabXnF3t6eXbnyRemz4PTBPp10r8jha9e+Kvb6rNIR0SLGb27csN3dXVtbW7PJyd+PyuzsrB0eHlZ7mi0tLdm3d+5Ua81BtAizbOOmp6ftwme9LYsWe9ht1zqdVdiHW3191Vp9QrTldFy0ExMTNcfhoaEfinbRqmgpJIdncGDAfhweDtF2mBDt69ER0e7s7Nj8/Fwh0OHhIVtZWbGRkZEa8fJ9d3V1tWXRPnn8uCYxtJmpaOnz9ltvFoVx2mwSy7fLrtoYJ5sUjuSsYdoHNJaXxnvvvlO6zj4OxUc/+qtdLyE/R9rxvb6+fuSbq0/aenP0pELydeJh3WSful8fHxexqL1McH6c1oJ+amM8diD1659BvTWTaMt8nQWYR3d3d3tF+/LlP/b5pUv26NEvxXfW8z099vf8fM13Wcr+/n7LoiWJ2TzNSYnGVRvMpvtEpZ06G+7HirSdK8mgpPX4vkpm+U2RXw/jKpXuI1/YuHjxQo09jWG8khK/zF8x1ZtjCv19u697+6lv+pW9CLQPXFNSXx58UXTvxeZj56o5+rWmcJ/G08hnbjDHrq6u9op2dHTUnj79tVozm5mZsf7+W3b9+tf2/rlz9sn5nuK7LrQqWq5KgLI2NpVN9Enl+/EsfbP75ICyBCE59HanUPd2U1KbgnHE6SmbD6QJqYRuNkdPasPX5RearQH9mn26pb6IhbXWuDK/oNjTE40Kdn08FN+Pe8WZM8yx7cfjn+7ftz8mJ6u1V6It43VEq3uOkdp8JQKb1yyhuZJM2mxKo4QlaXxiYJ+21K6n3jPG+YQFxZ6OSUUgv8eZo0ht+Lr8QqM1oI/GpP083jZx6AQB9fyCYidX69lWPOqLPd+uvckZ5tL/5+X2ipafenp7P7W/nj2zhYUF+/ijD21qaqr4KSg9Iv/88OGJf/LxSUkCpEcsJQLPlCDgk0745GuUsODH4x/BkzRpTClpHIDtRsdjb88nOnCvZE1tl80RsIt92fTj/Jo1WgP6qx/tPn6Pj7eZX+ZZtr6+n0fxkM/+ZZDayhnm1HbRwosXq/bd4GDxKcpRGRFPjI8Xdf8HqZP+c0Wa0MyJPwAJNk+JxQbSNz0+pe3qD9zTRsIoQZQI+NQxT5/QxxFtPX+MVRtFQkzteREA9+pbb45lME79uJfNdM3qiZZ7XpCMRzD4Uj+P1kkv00Z+sS2bPvZ0XtjDro9He0WhTe25wxw7ItqUxcXFQrAHBwfVliAIyjg1og2C4HiEaIMgM0K0QZAZIdogyIwQbRBkRog2CDIjRBsEmRGiDYLM+F+0l+1f4QIo4ATfVSEAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:GetLastDownloadedFile IgnoreFiles="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Download" DownloadFolder="C:\Users\andrade_cicero\Downloads" File="[DowloadFile]" sap:VirtualizedContainerService.HintSize="433.6,558.4" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1">
+              <ui:GetLastDownloadedFile.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,290.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'Exportar'" sap:VirtualizedContainerService.HintSize="337.6,167.2" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="4f4704cd-155d-45a3-8298-6fb4fb70e639" Version="V1">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://app.powerbi.com/groups/8bdd631e-5557-4a28-87af-520464155137/reports/76491c3b-14f4-4b6b-9a28-5116923966d5/ReportSection1546a6aba8b6c52d8f86?language=pt-BR" DesignTimeRectangle="792, 621, 86, 32" ElementType="Button" FriendlyName="'Exportar'" FullSelectorArgument="&lt;webctrl aaname='Exportar' parentid='mat-dialog-0' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Exportar' parentid='mat-dialog-0' tag='BUTTON' type='' class='mat-focus-indicator pbi-modern-button primaryBtn exportButton mat-button mat-button-base' check:innerText='Exportar' /&gt;" Guid="f5058958-b478-4bd0-ac85-e42be632d5a3" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAkCAYAAAAJgC2zAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAM0SURBVGhD7ZrBahpRFIb7Cj5E93mDPIK7voHLbApCAtnVXZJNcDe4kLSFxIUgEYJQQaYQnKqghMYJBJXCEGMIGhJiLfL3nLl3ZpI4lpI4t01yf/hhvOd6Hb85889dzBtoKZEGrUg+6I/fvuLth/eIrSa0F2TmyVxZPmgNORozV5YPOmyS9mLM0qAVmKVBKzBLg1ZglgatwCwNWoFZGrQCszRoBWZp0ArMWizomiNXuysHO2FzX5FZkYDu96rINTwXsRI2V5ETVg/DXyNU9sPrKsyKBLRdC6n9I6+f3tAZ3bwW0GtIOxOqTGCVxNiS2cOYRrqtbcT2jzGk4+FpCcYPBkOaTtClz+/8NbaRbjvUnaLM9eFZFckNUfeANtvUwVM6PDexc+7ODHR7jHWaG//Sgn3N5yN13YORnb+O+P3HmxV9Rss/F8uYsBnSZZ3g7aFy6x1TTYLG9AbdkzJSB2VULgQIu7ZFa69JABP0O1VsFvLY6YzcCzU+MxGnNUSddH2MVFqcz3LWQLonwFkVA4lPW1jiuXTB7KMikrsGUkcDdx0G6tZC1nmqWdFn9OGeC4LrccuhPzWBfTagWSOUcvJ7Hmin7P5ZdyxTR5fHCGRslS4SH19U/bUYvuH+3ACFTACoaXp1Ya9D50eHvOiyIeat8xSzFGe0gYJLlDqxkw/G/ejYuzNXwuVbtxBWvw9xHtCw8eVCFdb5CMOfE4w5Hlj3QC8201lKQXsd3R9SLEwHyMlc9ECPe8Vgfq6FPi/mlOjznzqato+U038NOlMVd8pliyKI4iSbD+noZwL6/vaOMpUjIiszmjo0znnNnUTgHma03cgjcWDC4ovhPzyDh6mX0caJyNYxXYggW2cBJU94nB667SKMhomkvDv4+ZDa/YzNtszo5wj6oezaNu0AGBTlqezile8jt9Zt3Nl1/KjDunKHXejNQyPI7A16sJ0OxE5A1nlXkniw65gBlC2jyR3LumohSbsXf2dD6nfqov6sQD/WoRn9cszSoBWYpUErMOv/AP3CzdKgFZilQSswS4NWYJYGrcAsDVqBWT5o/ZJjNJ55yVG/trt4M8+Z13a1opUGrUTAb3/c8DnWlQNDAAAAAElFTkSuQmCC" InformativeScreenshot="239d7d0c77de116ebcc7331fafec535f.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='RESERVA DE COTAS - Power BI' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                              <uix:Target DesignTimeRectangle="895, 621, 88, 32" ElementType="Button" FriendlyName="'Cancelar'" FullSelectorArgument="&lt;webctrl aaname='Cancelar' parentid='mat-dialog-0' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Cancelar' parentid='mat-dialog-0' tag='BUTTON' type='' class='mat-focus-indicator pbi-modern-button secondaryBtn cancelBtn exportButton mat-button mat-button-base' check:innerText='Cancelar' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAkCAYAAAAEnl30AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANVSURBVGhD7Zoxa9tAFMf7VfQlNJosIUM92ZuhgzeDoYJC0BK0uSkmhGJEIZhAMIEiAgEZAhoCGgpaigIJzlCcociQwA0BDQENhX/fySdZdhRok+hCwv1AIOmdHqffnd+dQe+gkIoSLplc+MX5OezBV/S/fFbHMx7cKXebkQvngZvra3GleC64U+42IxfOR0NRDUW3SrgElHDJKOGSUcIlo4RLRgmXjBIuGSVcMtULj6fwBiZaGzo0TYOmr6PV9xGLsHRuXHSoH50xEzfkUq3wmQdzjUtuwdxz4QcB/PEIvYGHl3ld4u0Kj+C0SXbDRvhi07mENyv8zIau6dgJkvl1CclvH/ZmEzVeaqjt+scRJncimIk5niAYtNM2+oaB0WUhH5Urd7uNdV08v70oVfHPIcxGLS1jtYa5eG5V+G2I0VaWg9q2e/Bn81De9tDDqMtz0eQRocdSmXA27lAHO3BvxI0SmGdj6E/B4hiRv4MmlzoQryReVl/rwA4isCsPOw2S8n6ICY8nE9j8umHBCSjHLIRz6KelKqHBbtIAGN8nlDuC329SWbPg3y7y5sIvqMQdhYioD+zSgcHFd915yRNtNd2Amw3CE3lR4cswuN37L1vfS/WmRMeLnPGpRectjK5EMIfB+0R5Nr3Fwhz7sCiXcUKZV4WvEA7o2WwmZ33YX/ThqVQmPPnRo47XMbwUN8pgAZxdC50PLTT54spn04rwopjiIE6+8V1P2U88hM3zlBxprtW8fBd10INJfch3UivCHxqcx1CZcCQBdtKfp4Poj7hXRMTr2x6mLEZ8F5XO8IeEsxODzttwfotgjpjhW7QTojIRFw9expfyioW9O0Q4422S0hn+OoQTzLfSuqxRHe4deQjSbeEQFklmzINBsTotdFHMMPXmNfxfheOWygQNmN7q3avhfDB0rQlL1OaYYm7fmdf+pby0DqSTghZrGvTobDSv4a9VOCf+5RV2InynQXvy/ZDqa4LJgTHfHdCfIfPIp53AfwjnzAq7HMrRHgSibieYjntoZyVirQmTYmV5o1Nql5azWvq8t8vPX7FwxTJKuGSUcMko4ZJRwiWjhEtGCZeMEi4ZJVwypcLVx5zV8ODHnOpz5WoO7rT0c2WFHJRwqQB/AUeUtpODo6SDAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:GetLastDownloadedFile.Body>
+            </ui:GetLastDownloadedFile>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-1374, 178, 1382, 744" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJqSURBVDhPlZPZS1RRHMd9yJkKPGfeIiw1sxBJ0jIJySIi+gesDFvMLBER9yKVaJP23HDLMi2qV7fc0sZlHJcZNXGbcXRuPgQuo44K3nm63353Erk+pPWDD+fh8Pmccx6Oy79MT6qr0J2mRleqjAr6FDV0ya7C2vbWI4tTnzWY+sQhfOQSAV2iCmvbW48+WQXrBy7JTJbTWqFBR8J/BDrpNGsFh7Vcg8n3GkyUcbTHq/8eMOV7CaZ8T4zleWAs1wO/KgMxrw/FcBGXxkudoDVukxvI4srgOawMnMVy/xks953GkuEU+nIZzCXciTZ2k8Bozp4N4lLvCdh7QmDIpkCxBqYijpaYTQIjr91JPEliKOzdIbB3HcdiZzB6XjKMFnAM5zGp+ZYiYHl3TLCUBYNWIgiz2osQrUmw60nUB2NRF4SF9kB0P2cYyZMDHE3RGwNwTGUS6XD8vEOkwSGkYKHjKGxtAdJC22HMt/qj6ynDUA7HUDZHY5Qy8PYISbeJVBKT4LAm0A3iIYs27SHYvvvB1uILXZYbBl8x/HjB0HBdGSgNIDHRKTmscRAnYyFOxKyLc80HMdfkg46Hsswx8Iyh7poiMP7GH6uWWGnVEiOJEzchWm5AHI/E3LcDTnG2wRsz9V5ov8/QT8/oe8JQe0UZKPGjE6NJjCIiSb4M0RxB4j7M1ntipm4vZmrd0XrPDcYsBsNjhpoIZaDYl6SrTnHVFE5cIMIw/fWPOF2zG9PVu6DNcIPhEUPvA4bqS4qAucBHMBf6wFy4H+YC73WMmTthzNgBY/p2GO+q8SXMFVUkVoWrUHl+G31nF5ffw9bUgw7moFMAAAAASUVORK5CYII=" InformativeScreenshot="755383381b1c22010057fb0006766948.png" Selector="&lt;html app='msedge.exe' title='RESERVA DE COTAS - Power BI' /&gt;" Url="https://app.powerbi.com/groups/8bdd631e-5557-4a28-87af-520464155137/reports/76491c3b-14f4-4b6b-9a28-5116923966d5/ReportSectione21162cf09683e3ee019?language=pt-BR" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="529.6,658.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[DowloadFile.FullName]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="462.4,539.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,416" sap2010:WorkflowViewState.IdRef="Sequence_3">
               <Sequence.Variables>
                 <Variable x:TypeArguments="sd:DataTable" Name="Result" />
                 <Variable x:TypeArguments="sd:DataTable" Name="dtData" />
@@ -102,15 +200,15 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="338,69" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Export">
+              <ui:ExcelReadRange AddHeaders="True" DataTable="[dtData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="337.6,69.6" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Export">
                 <ui:ExcelReadRange.Range>
                   <InArgument x:TypeArguments="x:String">
                     <Literal x:TypeArguments="x:String" Value="" />
                   </InArgument>
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
-              <ui:BuildDataTable DataTable="[dtReport2]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="338,69" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Usuário_x0020_reserva&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Reservas&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Utilização_x0020_de_x0020_reserva_x0020_esperada&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0025__x0020_reservas_x0020_usadas&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Propostas&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-              <Assign sap:VirtualizedContainerService.HintSize="338,74" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <ui:BuildDataTable DataTable="[dtReport2]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="337.6,69.6" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Usuário_x0020_reserva&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Reservas&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Utilização_x0020_de_x0020_reserva_x0020_esperada&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;_x0025__x0020_reservas_x0020_usadas&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Propostas&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+              <Assign sap:VirtualizedContainerService.HintSize="337.6,73.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="sd:DataTable">[dtReport2]</OutArgument>
                 </Assign.To>
@@ -130,7 +228,7 @@ Select dtReport2.rows.add(ra)).copytodatatable]</InArgument>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
     </ui:ExcelApplicationScope>
-    <ui:WriteRange AddHeaders="False" DataTable="[dtreport2]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="452,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Dados" WorkbookPath="[&quot;AutomaçãoReservaDeCotas &quot;+now.tostring(&quot;dd-MM-yyyy&quot;)+&quot;.xlsx&quot;]">
+    <ui:WriteRange AddHeaders="False" DataTable="[dtreport2]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="529.6,125.6" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Dados" WorkbookPath="[&quot;AutomaçãoReservaDeCotas &quot;+now.tostring(&quot;dd-MM-yyyy&quot;)+&quot;.xlsx&quot;]">
       <ui:WriteRange.StartingCell>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
